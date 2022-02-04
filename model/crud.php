@@ -4,8 +4,7 @@ include_once('database.php');
 class Crud extends DATABASE{
 
     //Nombre de la tabla
-    private $table = 'task';
-
+    private $table = 'participantes';
 
     //Obtiene todos registros de la tabla
     public function getAll(){
@@ -51,11 +50,14 @@ class Crud extends DATABASE{
     // Inserta un nuevo registro en la tabla
     public function create(){
         try{
-            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TITLE, DESCRIPTION) VALUES (?,?)");
+            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (NOMBRE, CARGO, CONTACTO, COMPROMISO, RESPONSABILIDADES) VALUES (?,?,?,?,?)");
             
             $stm->execute([
-                $_POST['title'],
-                $_POST['description']
+                $_POST['name'],
+                $_POST['cargo'],
+                $_POST['contacto'],
+                $_POST['compromiso'],
+                $_POST['responsabilidad']
             ]);
         }catch(PDOException $e){
         echo $e->getMessage();
@@ -63,13 +65,15 @@ class Crud extends DATABASE{
       }
 
       // Actualiza un resgistro por Id
-      public function update(){
+      /* public function update(){
         try{
             $stm=$this->getConnection()->prepare("UPDATE $this->table SET TITLE= ? ,DESCRIPTION= ? WHERE ID = ?");
 
             $stm->execute([
-                $_POST['title'],
-                $_POST['description'],
+                $_POST['name'],
+                $_POST['cargo'],
+                $_POST['compromiso'],
+                $_POST['responsabilidad']
                 $_REQUEST['id']
         ]);
 
@@ -77,7 +81,7 @@ class Crud extends DATABASE{
             echo $e->getMessage();
         }
       }
-
+ */
 
 
 

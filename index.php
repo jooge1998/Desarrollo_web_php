@@ -88,6 +88,8 @@
 
         <input class="form-control mb-3" type="text" name="cargo" placeholder="Cargo" required>
 
+        <input class="form-control mb-3" type="text" name="contacto" placeholder="Contacto" required>
+
         <input class="form-control mb-3" type="text" name="compromiso" placeholder="Compromiso" required>
 
         <input class="form-control mb-3" type="text" name="responsabilidad" placeholder="Responsabilidad" required>
@@ -110,13 +112,18 @@
 
             name = document.getElementsByName("name")[0].value
             cargo = document.getElementsByName("cargo")[0].value
+            contacto = document.getElementsByName("contacto")[0].value
             compromiso = document.getElementsByName("compromiso")[0].value
             responsabilidad = document.getElementsByName("responsabilidad")[0].value
             
+
+
             /* peticion ajax */
+
             var formdata = new FormData();
             formdata.append("name", name);
             formdata.append("cargo", cargo);
+            formdata.append("contacto", contacto);
             formdata.append("compromiso", compromiso);
             formdata.append("responsabilidad", responsabilidad);
 
