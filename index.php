@@ -92,6 +92,8 @@
 
         <input class="form-control mb-3" type="text" name="responsabilidad" placeholder="Responsabilidad" required>
 
+     
+</form>
     </div>
     
 
@@ -104,14 +106,34 @@
 
         function peticion_ajax(){
 
-            console.log("funciona")
+            //console.log("funciona")
 
+            name = document.getElementsByName("name")[0].value
+            cargo = document.getElementsByName("cargo")[0].value
+            compromiso = document.getElementsByName("compromiso")[0].value
+            responsabilidad = document.getElementsByName("responsabilidad")[0].value
+            
+            /* peticion ajax */
+            var formdata = new FormData();
+            formdata.append("name", name);
+            formdata.append("cargo", cargo);
+            formdata.append("compromiso", compromiso);
+            formdata.append("responsabilidad", responsabilidad);
+
+            var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+            };
+
+            fetch("/desarrollo_Web/model/participantes.php", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
         }
-
-
     </script>
 
-    </form> 
+
 
     </div>
   </div>
