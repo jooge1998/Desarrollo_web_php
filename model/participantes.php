@@ -6,23 +6,26 @@ $crud = new Crud();
 
 $crud->create();
 
+$crud->create();
+
+
 $cont = 1;
 #recorre todos los datos en la base de datos
 foreach ($crud->getAll() as $key => $value) {
-
-    $datos = array(
-        "name" =>  $value->NOMBRE,
-        "cargo" => $value->CARGO,
-        "contacto" => $value->CONTACTO,
-        "compromiso" => $value->COMPROMISO,
-        "responsabilidad" => $value->RESPONSABILIDADES,
-);
-
-$json = json_encode($datos);
     
+    echo "<tr>";
+    echo  "<th scope='row'>".$cont."</th>";
+    echo  "<td >" . $value->NOMBRE . "</td>";
+    echo  "<td >" . $value->CARGO . "</td>";
+    echo  "<td >" . $value->CONTACTO . "</td>";
+    echo  "<td >" . $value->COMPROMISO . "</td>";
+    echo  "<td >" . $value->RESPONSABILIDADES . "</td>";
+    echo "</tr>";
+    $cont++;
+
+   
 }
 
-echo $json;
 
 /* print($_POST['name']);
 print($_POST['cargo']);

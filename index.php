@@ -62,7 +62,7 @@
                     <th scope="col">Responsabilidades</th>
                 </tr>
             </thead>
-                <tbody id="tbody_table" > 
+                <tbody id="table" > 
 
                 <?php
                 
@@ -124,10 +124,15 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <input name="salvar" value="Salvar" type="submit" onclick="peticion_ajax()" class="btn btn-primary">
+        <input name="salvar" value="Salvar" type="submit" onclick="peticion_ajax()" data-bs-dismiss="modal" class="btn btn-primary">
     </div>
 
+    <!-- codigo javascript -->
+
     <script>
+        
+        var array = []
+        var i = 1;
 
         function peticion_ajax(){
 
@@ -138,11 +143,33 @@
             contacto = document.getElementsByName("contacto")[0].value
             compromiso = document.getElementsByName("compromiso")[0].value
             responsabilidad = document.getElementsByName("responsabilidad")[0].value
-    
+
+            //guarda los datos en un json
+            var datos = {
+                "name" : name,
+                "cargo" : cargo,
+                "contacto" : contacto,
+                "compromiso" : compromiso,
+                "responsabilidad" : responsabilidad
+                }
+
+            // agg los datos a un array
+            array.push(datos)
+            
+           console.log(array)
+
+           agg_datos_tabla(datos)
+
+            //limpia los inputs de los formularios
+            name = document.getElementsByName("name")[0].value  = ""
+            cargo = document.getElementsByName("cargo")[0].value = ""
+            contacto = document.getElementsByName("contacto")[0].value = ""
+            compromiso = document.getElementsByName("compromiso")[0].value = ""
+            responsabilidad = document.getElementsByName("responsabilidad")[0].value = ""
 
             /* peticion ajax */
 
-            var formdata = new FormData();
+          /*   var formdata = new FormData();
             formdata.append("name", name);
             formdata.append("cargo", cargo);
             formdata.append("contacto", contacto);
@@ -158,13 +185,38 @@
             fetch("/desarrollo_Web/model/participantes.php", requestOptions)
             .then(response => response.text())
             .then(function(result) {
-                /* var id = document.getElementById("tbody_table")
 
-                id.innerHTML = "result" */
                  console.log(result)  
             } )
             .catch(error => console.error('error', error));
+        } */
         }
+
+
+        // agrega los datos ingresados en el modal a la tabla
+        function agg_datos_tabla(datos){
+
+            var fila = "<tr><td>" + i +  "</td>" +
+                            "<td>" + datos["name"] + "</td>" + 
+                            "<td>" + datos["cargo"] + "</td>" + 
+                            "<td>" + datos["contacto"] + "</td>" + 
+                            "<td>" + datos["compromiso"] + "</td>" +
+                            "<td>" + datos["responsabilidad"] + "</td>";
+
+            // crea un element html tipo tr
+            var tr = document.createElement("TR");
+
+            //le agrega contenido al elemento tr
+            tr.innerHTML = fila;
+
+            //lo inserta en la el tbody de la tabla
+            document.getElementById('table').appendChild(tr);
+            // aumenta el contador
+            i++;
+
+        }
+
+
     </script>
 
 
