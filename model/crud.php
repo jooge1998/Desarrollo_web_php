@@ -65,15 +65,16 @@ class Crud extends DATABASE{
       }
 
       // Actualiza un resgistro por Id
-      /* public function update(){
+      public function update(){
         try{
-            $stm=$this->getConnection()->prepare("UPDATE $this->table SET TITLE= ? ,DESCRIPTION= ? WHERE ID = ?");
+            $stm=$this->getConnection()->prepare("UPDATE $this->table SET NOMBRE = ?, CARGO = ? , CONTACTO = ? , COMPROMISO = ? , RESPONSABILIDADES = ?  WHERE ID = ?");
 
             $stm->execute([
                 $_POST['name'],
                 $_POST['cargo'],
+                $_POST['contacto'],
                 $_POST['compromiso'],
-                $_POST['responsabilidad']
+                $_POST['responsabilidad'],
                 $_REQUEST['id']
         ]);
 
@@ -81,7 +82,7 @@ class Crud extends DATABASE{
             echo $e->getMessage();
         }
       }
- */
+
 
 
 

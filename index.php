@@ -54,6 +54,7 @@
             <thead class="table-dark">
             
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Contacto</th>
@@ -61,10 +62,32 @@
                     <th scope="col">Responsabilidades</th>
                 </tr>
             </thead>
-                <tbody>
+                <tbody id="tbody_table" > 
+
+                <?php
                 
-            
-                
+                include_once "./model/crud.php";
+
+                $crud = new Crud();
+               
+                $cont = 1;
+                    #recorre todos los datos en la base de datos
+                    foreach ($crud->getAll() as $key => $value) {
+                        
+                        echo "<tr>";
+                        echo  "<th scope='row'>".$cont."</th>";
+                        echo  "<td >" . $value->NOMBRE . "</td>";
+                        echo  "<td >" . $value->CARGO . "</td>";
+                        echo  "<td >" . $value->CONTACTO . "</td>";
+                        echo  "<td >" . $value->COMPROMISO . "</td>";
+                        echo  "<td >" . $value->RESPONSABILIDADES . "</td>";
+                        echo "</tr>";
+                        $cont++;
+
+                    
+                    }
+
+                ?>                
                 </tbody>
         </table>
             
@@ -115,8 +138,7 @@
             contacto = document.getElementsByName("contacto")[0].value
             compromiso = document.getElementsByName("compromiso")[0].value
             responsabilidad = document.getElementsByName("responsabilidad")[0].value
-            
-
+    
 
             /* peticion ajax */
 
@@ -135,8 +157,13 @@
 
             fetch("/desarrollo_Web/model/participantes.php", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            .then(function(result) {
+                /* var id = document.getElementById("tbody_table")
+
+                id.innerHTML = "result" */
+                 console.log(result)  
+            } )
+            .catch(error => console.error('error', error));
         }
     </script>
 
