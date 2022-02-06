@@ -6,26 +6,15 @@ $crud = new Crud();
 
 $crud->create();
 
-$crud->create();
 
-
-$cont = 1;
-#recorre todos los datos en la base de datos
-foreach ($crud->getAll() as $key => $value) {
-    
-    echo "<tr>";
-    echo  "<th scope='row'>".$cont."</th>";
-    echo  "<td >" . $value->NOMBRE . "</td>";
-    echo  "<td >" . $value->CARGO . "</td>";
-    echo  "<td >" . $value->CONTACTO . "</td>";
-    echo  "<td >" . $value->COMPROMISO . "</td>";
-    echo  "<td >" . $value->RESPONSABILIDADES . "</td>";
-    echo "</tr>";
-    $cont++;
-
-   
-}
-
+print($_POST['tema'] . "</br>");
+print($_POST['citada']. "</br>");
+print($_POST['hora_inicio']. "</br>");
+print($_POST['hora_fin']. "</br>");
+print($_POST['fecha']. "</br>");
+print($_POST['presidente']. "</br>");
+print($_POST['participantes']. "</br>");
+print($_POST['orden_dia']. "</br>");
 
 /* print($_POST['name']);
 print($_POST['cargo']);

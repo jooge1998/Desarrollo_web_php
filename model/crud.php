@@ -4,7 +4,7 @@ include_once('database.php');
 class Crud extends DATABASE{
 
     //Nombre de la tabla
-    private $table = 'participantes';
+    private $table = 'actas';
 
     //Obtiene todos registros de la tabla
     public function getAll(){
@@ -50,14 +50,17 @@ class Crud extends DATABASE{
     // Inserta un nuevo registro en la tabla
     public function create(){
         try{
-            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (NOMBRE, CARGO, CONTACTO, COMPROMISO, RESPONSABILIDADES) VALUES (?,?,?,?,?)");
+            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE, PARTICIPANTES, ORDEN_DIA) VALUES (?,?,?,?,?,?,?,?)");
             
             $stm->execute([
-                $_POST['name'],
-                $_POST['cargo'],
-                $_POST['contacto'],
-                $_POST['compromiso'],
-                $_POST['responsabilidad']
+                $_POST['tema'],
+                $_POST['citada'],
+                $_POST['hora_inicio'],
+                $_POST['hora_fin'],
+                $_POST['fecha'],
+                $_POST['presidente'],
+                $_POST['participantes'],
+                $_POST['orden_dia'],
             ]);
         }catch(PDOException $e){
         echo $e->getMessage();
@@ -70,11 +73,14 @@ class Crud extends DATABASE{
             $stm=$this->getConnection()->prepare("UPDATE $this->table SET NOMBRE = ?, CARGO = ? , CONTACTO = ? , COMPROMISO = ? , RESPONSABILIDADES = ?  WHERE ID = ?");
 
             $stm->execute([
-                $_POST['name'],
-                $_POST['cargo'],
-                $_POST['contacto'],
-                $_POST['compromiso'],
-                $_POST['responsabilidad'],
+                $_POST['tema'],
+                $_POST['citada'],
+                $_POST['hora_inicio'],
+                $_POST['hora_fin'],
+                $_POST['fecha'],
+                $_POST['presidente'],
+                $_POST['participantes'],
+                $_POST['orden_dia'],
                 $_REQUEST['id']
         ]);
 
