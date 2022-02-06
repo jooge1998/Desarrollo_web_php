@@ -136,8 +136,6 @@
 
         function peticion_ajax(){
 
-            //console.log("funciona")
-
             name = document.getElementsByName("name")[0].value
             cargo = document.getElementsByName("cargo")[0].value
             contacto = document.getElementsByName("contacto")[0].value
@@ -160,13 +158,7 @@
 
            agg_datos_tabla(datos)
 
-            //limpia los inputs de los formularios
-            name = document.getElementsByName("name")[0].value  = ""
-            cargo = document.getElementsByName("cargo")[0].value = ""
-            contacto = document.getElementsByName("contacto")[0].value = ""
-            compromiso = document.getElementsByName("compromiso")[0].value = ""
-            responsabilidad = document.getElementsByName("responsabilidad")[0].value = ""
-
+            limpiar_campos()
             /* peticion ajax */
 
           /*   var formdata = new FormData();
@@ -214,6 +206,15 @@
             // aumenta el contador
             i++;
 
+        }
+
+        //limpia los inputs de los formularios
+        function limpiar_campos(){
+            name = document.getElementsByName("name")[0].value  = ""
+            cargo = document.getElementsByName("cargo")[0].value = ""
+            contacto = document.getElementsByName("contacto")[0].value = ""
+            compromiso = document.getElementsByName("compromiso")[0].value = ""
+            responsabilidad = document.getElementsByName("responsabilidad")[0].value = ""
         }
 
 
