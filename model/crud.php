@@ -50,7 +50,7 @@ class Crud extends DATABASE{
     // Inserta un nuevo registro en la tabla
     public function create(){
         try{
-            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE, PARTICIPANTES, ORDEN_DIA) VALUES (?,?,?,?,?,?,?,?)");
+            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE, PARTICIPANTES) VALUES (?,?,?,?,?,?,?)");
             
             $stm->execute([
                 $_POST['tema'],
@@ -59,8 +59,7 @@ class Crud extends DATABASE{
                 $_POST['hora_fin'],
                 $_POST['fecha'],
                 $_POST['presidente'],
-                $_POST['participantes'],
-                $_POST['orden_dia'],
+                $_POST['participantes']
             ]);
         }catch(PDOException $e){
         echo $e->getMessage();
@@ -80,7 +79,6 @@ class Crud extends DATABASE{
                 $_POST['fecha'],
                 $_POST['presidente'],
                 $_POST['participantes'],
-                $_POST['orden_dia'],
                 $_REQUEST['id']
         ]);
 

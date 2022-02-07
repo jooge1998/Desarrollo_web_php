@@ -13,6 +13,11 @@
 </head>
 
 <body>
+    <div class="container mt-3">
+        <a href="actas.php" class="btn btn-primary">Ver Acta</a>
+    </div>
+
+
     <div class="container mt-5 d-flex justify-content-center align-items-center text-center">
         <form action="./model/participantes.php" method="POST" enctype="multipart/form-data">
 
@@ -41,10 +46,7 @@
 
             <input type="hidden" name="participantes" value="">
 
-            <input type="hidden" name="orden_dia" value="">
-
-            <button type="submit" class="btn btn-primary my-2"> Enviar</button>
-            
+            <input type="submit" name="btn" value="Enviar" class="btn btn-primary my-2" disabled="disabled">       
         </form>
     </div>
 
@@ -64,6 +66,7 @@
                     <th scope="col">Contacto</th>
                     <th scope="col">Compromisos</th>
                     <th scope="col">Responsabilidades</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody id="table">
@@ -142,9 +145,10 @@
 
                         agg_datos_tabla(datos)
 
-                        document.getElementsByName('participantes')[0].value = JSON.stringify(array)
+                        //elimina el atributo disable del boton enviar
+                        document.getElementsByName('btn')[0].removeAttribute("disabled")
 
-                        document.getElementsByName('orden_dia')[0].value = JSON.stringify(array)
+                        document.getElementsByName('participantes')[0].value = JSON.stringify(array)
 
                         limpiar_campos()
                         /* peticion ajax */
@@ -181,7 +185,18 @@
                             "<td>" + datos["cargo"] + "</td>" +
                             "<td>" + datos["contacto"] + "</td>" +
                             "<td>" + datos["compromiso"] + "</td>" +
-                            "<td>" + datos["responsabilidad"] + "</td>";
+                            "<td>" + datos["responsabilidad"] + "</td>"+
+                            "<td>" + 
+                            
+                            "<div class='d-flex justify-content-center'> "+
+
+                                "<input  class='btn btn-danger ' value='ELIMINAR' onclick='delete_dato("+(i=i-1)+")'>"+
+
+                                "<input class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1' value='EDITAR'> "+
+
+                            "</div>"
+                            + "</td></tr>";
+
 
                         // crea un element html tipo tr
                         var tr = document.createElement("TR");
@@ -194,6 +209,13 @@
                         // aumenta el contador
                         i++;
 
+                    }
+
+                    function delete_dato(index){
+                        console.log('funciona')
+                        //array.shift()
+                        array.splice(index,1)
+                        document.getElementById('table').deleteRow(index-1)
                     }
 
                     //limpia los inputs de los formularios

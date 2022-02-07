@@ -6,15 +6,19 @@ $crud = new Crud();
 
 $crud->create();
 
+header('Location: ../actas.php');
 
-print($_POST['tema'] . "</br>");
+
+
+
+/* print($_POST['tema'] . "</br>");
 print($_POST['citada']. "</br>");
 print($_POST['hora_inicio']. "</br>");
 print($_POST['hora_fin']. "</br>");
 print($_POST['fecha']. "</br>");
 print($_POST['presidente']. "</br>");
-print($_POST['participantes']. "</br>");
-print($_POST['orden_dia']. "</br>");
+print($_POST['participantes']. "</br>"); */
+    
 
 /* print($_POST['name']);
 print($_POST['cargo']);
