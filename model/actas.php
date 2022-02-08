@@ -67,19 +67,19 @@ class Actas extends DATABASE{
       }
 
       // Actualiza un resgistro por Id
-      public function update(){
+      public function update($id){
         try{
-            $stm=$this->getConnection()->prepare("UPDATE $this->table SET NOMBRE = ?, CARGO = ? , CONTACTO = ? , COMPROMISO = ? , RESPONSABILIDADES = ?  WHERE ID = ?");
+            $stm=$this->getConnection()->prepare("UPDATE $this->table SET TEMA = ?, CITADA_POR = ? , HORA_INICIO = ? , HORA_FIN = ? ,FECHA = ?, PRESIDENTE = ? , COMPROMISOS = ? WHERE N_ACTA = ?");
 
             $stm->execute([
                 $_POST['tema'],
-                $_POST['citada'],
+                $_POST['citada_por'],
                 $_POST['hora_inicio'],
                 $_POST['hora_fin'],
                 $_POST['fecha'],
                 $_POST['presidente'],
-                $_POST['participantes'],
-                $_REQUEST['id']
+                $_POST['compromisos'],
+                $id
         ]);
 
         }catch(PDOException $e){

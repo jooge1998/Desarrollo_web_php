@@ -4,17 +4,28 @@ include_once "actas.php";
 
 $crud = new Actas();
 
-if(isset($_GET['id'])){
+
+if(isset($_GET['editar']) and isset($_GET['id']) ){
+
+    $crud->update($_GET['id']);
+    header('Location: ../actas.php');
+}
+
+if(isset($_GET['create']) and isset($_GET['id']) ){
+    $crud->create();
+    header('Location: ../actas.php');
+} 
+
+ if(isset($_GET['action']) == 'delete' and isset($_GET['id'])){
 
     echo "delete";
     $crud->delete($_GET['id']);
     header('Location: ../actas.php');
 
-}else{
-    $crud->create();
-    header('Location: ../actas.php');
-
 }
+
+
+
 
 
 

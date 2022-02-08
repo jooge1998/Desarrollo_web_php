@@ -41,6 +41,8 @@
 
         $crud = new Actas();
 
+        $i = 1;
+
         foreach ($crud->getAll() as $key => $value) {
 
           echo "<tr>";
@@ -55,13 +57,14 @@
           echo  "<td>
           <div class='d-flex justify-content-center'>
 
-          <a href='model/participantes.php?id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
+          <a href='model/participantes.php?action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
-          <a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1'> EDITAR</a>
+          <a class='btn btn-primary' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
 
           </div>
           </td>";
           echo "</tr>";
+          $i++;
       }
 
             
@@ -70,6 +73,76 @@
         </tbody>
     </table>
     </div>
+
+  
+     <!-- Inicio Modal Editar -->
+     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Editar Acta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                <form id='formEdit' action="" method="post">
+                  
+                    <input class="form-control mb-3" type="text" name="tema" placeholder="Tema" required>
+
+                    <input class="form-control mb-3" type="text" name="citada_por" placeholder="citada por" required>
+
+                    <label for="">
+                Hora Inicio
+                <input class="form-control mb-3" type="time" name="hora_inicio" required>
+            </label>
+
+            <label for="">
+                Hora Fin
+                <input class="form-control mb-3" type="time" name="hora_fin" required>
+            </label>
+
+            <label for="">
+                Fecha
+                <input class="form-control mb-3" type="date" name="fecha" required>
+            </label>
+
+            <input class="form-control mb-3" type="text" name="presidente" placeholder="Presidente de la Reunion" required>
+
+            <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
+
+               </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <input name="Editar" value="Editar" type="submit" onclick="editar()" data-bs-dismiss="modal" class="btn btn-primary">
+                </div>
+    <!-- Fin Modal Editar -->
+    </form> 
+
+    <script>
+          
+          function enviar(id){
+
+            const n_acta = document.getElementById('table').childNodes[id].childNodes[7].childNodes[1].childNodes[1].getAttribute("href").split('=')[2];
+
+            const formEdit = document.getElementById('formEdit');
+
+// le agrega la ruta al action del formulario
+            formEdit.setAttribute('action','/desarrollo_Web/model/participantes.php?editar=action&id='+n_acta);
+            //console.log(id)
+                      
+            document.getElementsByName('tema')[0].value = document.getElementById('table').childNodes[id].childNodes[0].innerHTML;
+            document.getElementsByName('citada_por')[0].value = document.getElementById('table').childNodes[id].childNodes[1].innerHTML;
+            document.getElementsByName('hora_inicio')[0].value = document.getElementById('table').childNodes[id].childNodes[2].innerHTML;
+            document.getElementsByName('hora_fin')[0].value = document.getElementById('table').childNodes[id].childNodes[3].innerHTML;
+            document.getElementsByName('fecha')[0].value = document.getElementById('table').childNodes[id].childNodes[4].innerHTML;
+            document.getElementsByName('presidente')[0].value = document.getElementById('table').childNodes[id].childNodes[5].innerHTML;
+            document.getElementsByName('compromisos')[0].value = document.getElementById('table').childNodes[id].childNodes[6].innerHTML;
+            
+          }
+
+        </script>
 
 
 
