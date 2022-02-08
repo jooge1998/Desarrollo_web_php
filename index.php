@@ -13,12 +13,12 @@
 </head>
 
 <body>
-    <div class="container mt-3">
+    <div class="container mt-3 d-flex justify-content-end">
         <a href="actas.php" class="btn btn-primary">Ver Acta</a>
     </div>
 
 
-    <div class="container mt-5 d-flex justify-content-center align-items-center text-center">
+    <div class="container mt-3 d-flex justify-content-center align-items-center text-center">
         <form action="./model/participantes.php" method="POST" enctype="multipart/form-data">
 
             <h4 class="mb-3 ">Formulario Acta</h4>
@@ -44,7 +44,7 @@
 
             <input class="form-control mb-3" type="text" name="presidente" placeholder="Presidente de la Reunion" required>
 
-            <input type="hidden" name="participantes" value="">
+            <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
 
             <input type="submit" name="btn" value="Enviar" class="btn btn-primary my-2" disabled="disabled">       
         </form>
@@ -64,8 +64,6 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Contacto</th>
-                    <th scope="col">Compromisos</th>
-                    <th scope="col">Responsabilidades</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -103,11 +101,7 @@
 
                     <input class="form-control mb-3" type="text" name="contacto" placeholder="Contacto" required>
 
-                    <input class="form-control mb-3" type="text" name="compromiso" placeholder="Compromiso" required>
-
-                    <input class="form-control mb-3" type="text" name="responsabilidad" placeholder="Responsabilidad" required>
                 </div>
-
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -126,16 +120,12 @@
                         name = document.getElementsByName("name")[0].value
                         cargo = document.getElementsByName("cargo")[0].value
                         contacto = document.getElementsByName("contacto")[0].value
-                        compromiso = document.getElementsByName("compromiso")[0].value
-                        responsabilidad = document.getElementsByName("responsabilidad")[0].value
 
                         //guarda los datos en un json
                         var datos = {
                             "name": name,
                             "cargo": cargo,
                             "contacto": contacto,
-                            "compromiso": compromiso,
-                            "responsabilidad": responsabilidad
                         }
 
                         // agg los datos a un array
@@ -148,7 +138,7 @@
                         //elimina el atributo disable del boton enviar
                         document.getElementsByName('btn')[0].removeAttribute("disabled")
 
-                        document.getElementsByName('participantes')[0].value = JSON.stringify(array)
+                        //document.getElementsByName('participantes')[0].value = JSON.stringify(array)
 
                         limpiar_campos()
                         /* peticion ajax */
@@ -184,8 +174,6 @@
                             "<td>" + datos["name"] + "</td>" +
                             "<td>" + datos["cargo"] + "</td>" +
                             "<td>" + datos["contacto"] + "</td>" +
-                            "<td>" + datos["compromiso"] + "</td>" +
-                            "<td>" + datos["responsabilidad"] + "</td>"+
                             "<td>" + 
                             
                             "<div class='d-flex justify-content-center'> "+
@@ -223,19 +211,49 @@
                         name = document.getElementsByName("name")[0].value = ""
                         cargo = document.getElementsByName("cargo")[0].value = ""
                         contacto = document.getElementsByName("contacto")[0].value = ""
-                        compromiso = document.getElementsByName("compromiso")[0].value = ""
-                        responsabilidad = document.getElementsByName("responsabilidad")[0].value = ""
                     }
                 </script>
 
                 </form>
 
             </div>
+
+
         </div>
     </div>
 
     <!-- Fin Modal Agregar -->
 
+    <!-- Inicio Modal Editar -->
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Editar Participante</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                  
+                    <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
+
+                    <input class="form-control mb-3" type="text" name="cargo" placeholder="Cargo" required>
+
+                    <input class="form-control mb-3" type="text" name="contacto" placeholder="Contacto" required>
+               </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <input name="Editar" value="Editar" type="submit" onclick="editar()" data-bs-dismiss="modal" class="btn btn-primary">
+                </div>
+    <!-- Fin Modal Editar -->
+
+    <script>
+        
+
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

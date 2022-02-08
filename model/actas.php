@@ -1,7 +1,7 @@
 <?php
 include_once('database.php');
 
-class Crud extends DATABASE{
+class Actas extends DATABASE{
 
     //Nombre de la tabla
     private $table = 'actas';
@@ -38,7 +38,7 @@ class Crud extends DATABASE{
     public function delete($id){
         try
         {
-            $stm = $this->getConnection()->prepare("DELETE FROM $this->table WHERE id=?");
+            $stm = $this->getConnection()->prepare("DELETE FROM $this->table WHERE N_ACTA=?");
             $stm->execute([$id]);
         }
         catch (PDOException $e)
@@ -50,7 +50,7 @@ class Crud extends DATABASE{
     // Inserta un nuevo registro en la tabla
     public function create(){
         try{
-            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE, PARTICIPANTES) VALUES (?,?,?,?,?,?,?)");
+            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE, COMPROMISOS) VALUES (?,?,?,?,?,?,?)");
             
             $stm->execute([
                 $_POST['tema'],
@@ -59,7 +59,7 @@ class Crud extends DATABASE{
                 $_POST['hora_fin'],
                 $_POST['fecha'],
                 $_POST['presidente'],
-                $_POST['participantes']
+                $_POST['compromisos']
             ]);
         }catch(PDOException $e){
         echo $e->getMessage();

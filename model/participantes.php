@@ -1,12 +1,25 @@
 <?php
 
-include_once "crud.php";
+include_once "actas.php";
 
-$crud = new Crud();
+$crud = new Actas();
 
-$crud->create();
+if(isset($_GET['id'])){
 
-header('Location: ../actas.php');
+    echo "delete";
+    $crud->delete($_GET['id']);
+    header('Location: ../actas.php');
+
+}else{
+    $crud->create();
+    header('Location: ../actas.php');
+
+}
+
+
+
+
+
 
 
 

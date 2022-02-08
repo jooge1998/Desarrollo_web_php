@@ -12,7 +12,7 @@
   </head>
   <body>
 
-  <div class="container mt-5">
+  <div class="container mt-5 d-flex justify-content-end">
 
     <a href="index.php" class="btn btn-primary">Agregar Acta</a>
   </div>
@@ -29,7 +29,7 @@
                 <th scope="col">HORA FIN</th>
                 <th scope="col">FECHA</th>
                 <th scope="col">PRESIDENTE</th>
-                <th scope="col">PARTICIPANTES</th>
+                <th scope="col">COMPROMISOS</th>
                 <th scope="col">ACTION</th>
             </tr>
         </thead>
@@ -37,34 +37,34 @@
 
     <?php
 
-        include_once "./model/crud.php";
+        include_once "./model/actas.php";
 
-        $crud = new Crud();
+        $crud = new Actas();
 
         foreach ($crud->getAll() as $key => $value) {
 
-            echo "<tr>";
-            echo  "<td >" . $value->TEMA . "</td>";
-            echo  "<td >" . $value->CITADA_POR . "</td>";
-            echo  "<td >" . $value->HORA_INICIO . "</td>";
-            echo  "<td >" . $value->HORA_FIN . "</td>";
-            echo  "<td >" . $value->FECHA . "</td>";
-            echo  "<td >" . $value->PRESIDENTE . "</td>";
-            echo  "<td >" . $value->PARTICIPANTES . "</td>";
-  
-            echo  "<td>
-            <div class='d-flex justify-content-center'>
+          echo "<tr>";
+          echo  "<td >" . $value->TEMA . "</td>";
+          echo  "<td >" . $value->CITADA_POR . "</td>";
+          echo  "<td >" . $value->HORA_INICIO . "</td>";
+          echo  "<td >" . $value->HORA_FIN . "</td>";
+          echo  "<td >" . $value->FECHA . "</td>";
+          echo  "<td >" . $value->PRESIDENTE . "</td>";
+          echo  "<td >" . $value->COMPROMISOS . "</td>";
 
-            <a href='./model/partipantes.php?id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
+          echo  "<td>
+          <div class='d-flex justify-content-center'>
 
-            <a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1'> EDITAR</a>
+          <a href='model/participantes.php?id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
-            </div>
-            </td>";
-            echo "</tr>";
+          <a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1'> EDITAR</a>
 
-           
-        }
+          </div>
+          </td>";
+          echo "</tr>";
+      }
+
+            
         ?>
 
         </tbody>
