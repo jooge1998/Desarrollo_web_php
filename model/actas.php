@@ -1,5 +1,5 @@
 <?php
-include_once('database.php');
+include_once('/xampp/htdocs/desarrollo_web_php/database/database.php');
 
 class Actas extends DATABASE{
 

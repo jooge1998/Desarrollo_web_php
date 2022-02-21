@@ -6,87 +6,81 @@ class ControllerActas{
 #crea un nuevo cliente
 public function Create(){
     
-    require_once  ("/xampp/htdocs/desarrollo_Web/Model/actas.php");
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
 
     $actas = new Actas();
 
     #verifica si el boton agregar con el name salvar fue presionado
-    if(isset($_POST['salvar'])){
+    if(isset($_POST['btn'])){
         #llama al metodo create
-        $clientes->create();
+        $actas->create();
 
-        header('location: /dasboard/View/Clientes.php');
+        header('location: /desarrollo_Web_php/View/actas.php');
     }
 
 }
 
 public function Delete(){
 
-    require_once  ("/xampp/htdocs/dasboard/Model/Clientes.php");
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
 
-    $clientes = new Clientes();
+    $actas = new Actas();
 
     #verifica si hay una solicitud de tipo de get
     if(isset($_GET['id'])){
         #llama al metodo delete delete
-        $clientes->delete($_GET['id']);
+        $actas->delete($_GET['id']);
 
-        header('location: /dasboard/View/Clientes.php');
+        header('location: /desarrollo_Web_php/View/actas.php');
     }
 }
 
 public function Read(){
-    require_once  ("/xampp/htdocs/dasboard/Model/Clientes.php");
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
 
-    $clientes = new Clientes();
+    $actas = new Actas();
 
-  
-
-    $cont = 1;
+    $i = 1;
     #recorre todos los datos en la base de datos
-    foreach ($clientes->getAll() as $key => $value) {
-        
-        $datos = array("name" => $value->NOMBRE,
-                    "address"=> $value->DIRECCION,
-                    "email" => $value->EMAIL,
-                "cel" => $value->CEL,
-            "id" =>$value->ID);
+    
+    foreach ($actas->getAll() as $key => $value) {
 
-        $json = json_encode($datos);
+      echo "<tr>";
+      echo  "<td >" . $value->TEMA . "</td>";
+      echo  "<td >" . $value->CITADA_POR . "</td>";
+      echo  "<td >" . $value->HORA_INICIO . "</td>";
+      echo  "<td >" . $value->HORA_FIN . "</td>";
+      echo  "<td >" . $value->FECHA . "</td>";
+      echo  "<td >" . $value->PRESIDENTE . "</td>";
+      echo  "<td >" . $value->COMPROMISOS . "</td>";
 
-        echo "<tr>";
-        echo  "<th scope='row'>".$cont."</th>";
-        echo  "<td >" . $value->NOMBRE . "</td>";
-        echo  "<td >" . $value->DIRECCION . "</td>";
-        echo  "<td >" . $value->EMAIL . "</td>";
-        echo  "<td >" . $value->CEL . "</td>";
-        echo  "<td>
-        <div class='d-flex justify-content-center'>
-        <a href='/dasboard/View/Login.php?controller=Cliente&action=delete&id=$value->ID' class='btn btn-danger mr-1'>ELIMINAR</a> 
-         
-        <a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1' onclick='enviar( $json)'> EDITAR</a>
-        </div>
-        </td>";
-        echo "</tr>";
-        $cont++;
+      echo  "<td>
+      <div class='d-flex justify-content-center'>
 
-       
-    }
+      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
+
+      <a class='btn btn-primary' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
+
+      </div>
+      </td>";
+      echo "</tr>";
+      $i++;
+  }
 }
 
 
 public function Update(){
 
-    require_once  ("/xampp/htdocs/dasboard/Model/Clientes.php");
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
 
-    $clientes = new Clientes();
+    $actas = new Actas();
 
     #verifica si hay una solicitud de tipo de get
-    if(isset($_POST['editar'])){
+    if(isset($_POST['Editar'])){
         #llama al metodo delete delete
-        $clientes->update($_GET['id']);
+        $actas->update($_GET['id']);
 
-        header('location: /dasboard/View/Clientes.php');
+        header('location: /desarrollo_Web_php/View/actas.php');
     }
     
 }

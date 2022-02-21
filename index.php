@@ -14,12 +14,12 @@
 
 <body>
     <div class="container mt-3 d-flex justify-content-end">
-        <a href="actas.php" class="btn btn-primary">Ver Acta</a>
+        <a href="/desarrollo_web_php/View/actas.php" class="btn btn-primary">Ver Acta</a>
     </div>
 
 
     <div class="container mt-3 d-flex justify-content-center align-items-center text-center">
-        <form action="./model/participantes.php" method="POST" enctype="multipart/form-data">
+        <form action="/desarrollo_web_php/ruteador.php?controller=actas&action=create" method="POST" enctype="multipart/form-data">
 
             <h4 class="mb-3 ">Formulario Acta</h4>
 

@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Actas</title>
   </head>
   <body>
 
   <div class="container mt-5 d-flex justify-content-end">
 
-    <a href="index.php" class="btn btn-primary">Agregar Acta</a>
+    <a href="/desarrollo_web_php/index.php" class="btn btn-primary">Agregar Acta</a>
   </div>
 
   <div class="container d-flex justify-content-center my-5">
@@ -37,36 +37,11 @@
 
     <?php
 
-        include_once "./model/actas.php";
+        include_once "/xampp/htdocs/desarrollo_web_php/controller/ControllerActas.php";
 
-        $crud = new Actas();
+        $actas = new ControllerActas();
 
-        $i = 1;
-
-        foreach ($crud->getAll() as $key => $value) {
-
-          echo "<tr>";
-          echo  "<td >" . $value->TEMA . "</td>";
-          echo  "<td >" . $value->CITADA_POR . "</td>";
-          echo  "<td >" . $value->HORA_INICIO . "</td>";
-          echo  "<td >" . $value->HORA_FIN . "</td>";
-          echo  "<td >" . $value->FECHA . "</td>";
-          echo  "<td >" . $value->PRESIDENTE . "</td>";
-          echo  "<td >" . $value->COMPROMISOS . "</td>";
-
-          echo  "<td>
-          <div class='d-flex justify-content-center'>
-
-          <a href='model/participantes.php?action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
-
-          <a class='btn btn-primary' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
-
-          </div>
-          </td>";
-          echo "</tr>";
-          $i++;
-      }
-
+        $actas->Read();
             
         ?>
 
@@ -124,12 +99,12 @@
           
           function enviar(id){
 
-            const n_acta = document.getElementById('table').childNodes[id].childNodes[7].childNodes[1].childNodes[1].getAttribute("href").split('=')[2];
+            const n_acta = document.getElementById('table').childNodes[id].childNodes[7].childNodes[1].childNodes[1].getAttribute("href").split('=')[3];
 
             const formEdit = document.getElementById('formEdit');
 
 // le agrega la ruta al action del formulario
-            formEdit.setAttribute('action','/desarrollo_Web/model/participantes.php?editar=action&id='+n_acta);
+            formEdit.setAttribute('action','/desarrollo_Web_php/ruteador.php?controller=actas&action=update&id='+n_acta);
             //console.log(id)
                       
             document.getElementsByName('tema')[0].value = document.getElementById('table').childNodes[id].childNodes[0].innerHTML;
