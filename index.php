@@ -48,7 +48,7 @@
 
             <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
 
-            <input type="submit" name="btn" value="Enviar" class="btn btn-primary my-2" disabled="disabled">       
+            <input type="submit" name="btn" value="Enviar" class="btn btn-primary my-2">       
         </form>
     </div>
 
@@ -70,6 +70,15 @@
                 </tr>
             </thead>
             <tbody id="table">
+            <?php
+
+                include_once "/xampp/htdocs/desarrollo_web_php/controller/ControllerParticipantes.php";
+
+                $participantes = new ControllerParticipantes();
+
+                $participantes->Read();
+                    
+            ?>
 
             </tbody>
         </table>
@@ -110,112 +119,6 @@
                     <input name="salvar" value="Salvar" type="submit" onclick="peticion_ajax()" data-bs-dismiss="modal" class="btn btn-primary">
                 </div>
 
-                <!-- codigo javascript -->
-
-                <script>
-
-                    var array = []
-                    var i = 1;
-
-                    function peticion_ajax() {
-
-                        name = document.getElementsByName("name")[0].value
-                        cargo = document.getElementsByName("cargo")[0].value
-                        contacto = document.getElementsByName("contacto")[0].value
-
-                        //guarda los datos en un json
-                        var datos = {
-                            "name": name,
-                            "cargo": cargo,
-                            "contacto": contacto,
-                        }
-
-                        // agg los datos a un array
-                        array.push(datos)
-
-                        console.log(array)
-
-                        agg_datos_tabla(datos)
-
-                        //elimina el atributo disable del boton enviar
-                        document.getElementsByName('btn')[0].removeAttribute("disabled")
-
-                        //document.getElementsByName('participantes')[0].value = JSON.stringify(array)
-
-                        limpiar_campos()
-                        /* peticion ajax */
-
-                        /*   var formdata = new FormData();
-                        formdata.append("name", name);
-                        formdata.append("cargo", cargo);
-                        formdata.append("contacto", contacto);
-                        formdata.append("compromiso", compromiso);
-                        formdata.append("responsabilidad", responsabilidad);
-
-                        var requestOptions = {
-                        method: 'POST',
-                        body: formdata,
-                        redirect: 'follow'
-                        };
-
-                        fetch("/desarrollo_Web/model/participantes.php", requestOptions)
-                        .then(response => response.text())
-                        .then(function(result) {
-
-                            console.log(result)  
-                        } )
-                        .catch(error => console.error('error', error));
-                    } */
-                        }
-
-
-                    // agrega los datos ingresados en el modal a la tabla
-                    function agg_datos_tabla(datos) {
-
-                        var fila = "<tr><td>" + i + "</td>" +
-                            "<td>" + datos["name"] + "</td>" +
-                            "<td>" + datos["cargo"] + "</td>" +
-                            "<td>" + datos["contacto"] + "</td>" +
-                            "<td>" + 
-                            
-                            "<div class='d-flex justify-content-center'> "+
-
-                                "<input  class='btn btn-danger ' value='ELIMINAR' onclick='delete_dato("+(i=i-1)+")'>"+
-
-                                "<input class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#staticBackdrop1' value='EDITAR'> "+
-
-                            "</div>"
-                            + "</td></tr>";
-
-
-                        // crea un element html tipo tr
-                        var tr = document.createElement("TR");
-
-                        //le agrega contenido al elemento tr
-                        tr.innerHTML = fila;
-
-                        //lo inserta en la el tbody de la tabla
-                        document.getElementById('table').appendChild(tr);
-                        // aumenta el contador
-                        i++;
-
-                    }
-
-                    function delete_dato(index){
-                        console.log('funciona')
-                        //array.shift()
-                        array.splice(index,1)
-                        document.getElementById('table').deleteRow(index-1)
-                    }
-
-                    //limpia los inputs de los formularios
-                    function limpiar_campos() {
-                        name = document.getElementsByName("name")[0].value = ""
-                        cargo = document.getElementsByName("cargo")[0].value = ""
-                        contacto = document.getElementsByName("contacto")[0].value = ""
-                    }
-                </script>
-
                 </form>
 
             </div>
@@ -252,7 +155,7 @@
     <!-- Fin Modal Editar -->
 
     <script>
-        
+        check = document.getElementsByTagName('id')
 
 
     </script>
