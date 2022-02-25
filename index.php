@@ -44,6 +44,8 @@
 
             <input class="form-control mb-3" type="text" name="presidente" placeholder="Presidente de la Reunion" required>
 
+            <input class="form-control mb-3" type="text" name="lugar" placeholder="Lugar" required>
+
             <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
 
             <input type="submit" name="btn" value="Enviar" class="btn btn-primary my-2" disabled="disabled">       

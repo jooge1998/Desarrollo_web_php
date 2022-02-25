@@ -46,12 +46,16 @@ public function Read(){
     foreach ($actas->getAll() as $key => $value) {
 
       echo "<tr>";
+      echo  "<td >
+      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=viewRead&id=$value->N_ACTA'' class='btn btn-success'>v</a> 
+      </td>";
       echo  "<td >" . $value->TEMA . "</td>";
       echo  "<td >" . $value->CITADA_POR . "</td>";
       echo  "<td >" . $value->HORA_INICIO . "</td>";
       echo  "<td >" . $value->HORA_FIN . "</td>";
       echo  "<td >" . $value->FECHA . "</td>";
       echo  "<td >" . $value->PRESIDENTE . "</td>";
+      echo  "<td >" . $value->LUGAR . "</td>";
       echo  "<td >" . $value->COMPROMISOS . "</td>";
 
       echo  "<td>
@@ -66,6 +70,18 @@ public function Read(){
       echo "</tr>";
       $i++;
   }
+}
+
+
+
+public function ViewRead(){
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
+    #header('location: /desarrollo_Web_php/View/Viewactas.php');
+
+    $actas = new Actas();
+
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/View/Viewactas.php");
+
 }
 
 

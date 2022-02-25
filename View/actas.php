@@ -17,18 +17,20 @@
     <a href="/desarrollo_web_php/index.php" class="btn btn-primary">Agregar Acta</a>
   </div>
 
-  <div class="container d-flex justify-content-center my-5">
+  <div class="container-fluid d-flex justify-content-center my-5">
 
     <table class="table text-center">
         <thead class="table-dark">
 
             <tr>
+                <th scope="col">N</th>
                 <th scope="col">TEMA</th>
                 <th scope="col">CITADA POR</th>
                 <th scope="col">HORA INICIO</th>
                 <th scope="col">HORA FIN</th>
                 <th scope="col">FECHA</th>
                 <th scope="col">PRESIDENTE</th>
+                <th scope="col">LUGAR</th>
                 <th scope="col">COMPROMISOS</th>
                 <th scope="col">ACTION</th>
             </tr>
@@ -83,9 +85,9 @@
 
             <input class="form-control mb-3" type="text" name="presidente" placeholder="Presidente de la Reunion" required>
 
+            <input class="form-control mb-3" type="text" name="lugar" placeholder="Lugar" required>
+
             <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
-
-
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -98,7 +100,7 @@
           
           function enviar(id){
 
-            const n_acta = document.getElementById('table').childNodes[id].childNodes[7].childNodes[1].childNodes[1].getAttribute("href").split('=')[3];
+            const n_acta = document.getElementById('table').childNodes[id].childNodes[9].childNodes[1].childNodes[1].getAttribute("href").split('=')[3];
 
             const formEdit = document.getElementById('formEdit');
 
@@ -106,13 +108,14 @@
             formEdit.setAttribute('action','/desarrollo_Web_php/ruteador.php?controller=actas&action=update&id='+n_acta);
             //console.log(id)
                       
-            document.getElementsByName('tema')[0].value = document.getElementById('table').childNodes[id].childNodes[0].innerHTML;
-            document.getElementsByName('citada_por')[0].value = document.getElementById('table').childNodes[id].childNodes[1].innerHTML;
-            document.getElementsByName('hora_inicio')[0].value = document.getElementById('table').childNodes[id].childNodes[2].innerHTML;
-            document.getElementsByName('hora_fin')[0].value = document.getElementById('table').childNodes[id].childNodes[3].innerHTML;
-            document.getElementsByName('fecha')[0].value = document.getElementById('table').childNodes[id].childNodes[4].innerHTML;
-            document.getElementsByName('presidente')[0].value = document.getElementById('table').childNodes[id].childNodes[5].innerHTML;
-            document.getElementsByName('compromisos')[0].value = document.getElementById('table').childNodes[id].childNodes[6].innerHTML;
+            document.getElementsByName('tema')[0].value = document.getElementById('table').childNodes[id].childNodes[1].innerHTML;
+            document.getElementsByName('citada_por')[0].value = document.getElementById('table').childNodes[id].childNodes[2].innerHTML;
+            document.getElementsByName('hora_inicio')[0].value = document.getElementById('table').childNodes[id].childNodes[3].innerHTML;
+            document.getElementsByName('hora_fin')[0].value = document.getElementById('table').childNodes[id].childNodes[4].innerHTML;
+            document.getElementsByName('fecha')[0].value = document.getElementById('table').childNodes[id].childNodes[5].innerHTML;
+            document.getElementsByName('presidente')[0].value = document.getElementById('table').childNodes[id].childNodes[6].innerHTML;
+            document.getElementsByName('lugar')[0].value = document.getElementById('table').childNodes[id].childNodes[7].innerHTML;
+            document.getElementsByName('compromisos')[0].value = document.getElementById('table').childNodes[id].childNodes[8].innerHTML;
             
           }
 
