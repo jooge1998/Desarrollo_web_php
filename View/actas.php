@@ -85,12 +85,11 @@
 
             <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
 
-               </div>
 
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <input name="Editar" value="Editar" type="submit" onclick="editar()" data-bs-dismiss="modal" class="btn btn-primary">
+                    <input name="Editar" value="Editar" type="submit" data-bs-dismiss="modal" class="btn btn-primary">
                 </div>
     <!-- Fin Modal Editar -->
     </form> 
