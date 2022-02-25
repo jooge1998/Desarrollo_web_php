@@ -1,34 +1,23 @@
 <?php
 
-ob_start();
+/* base de datos */
 
 include_once('/xampp/htdocs/desarrollo_web_php/database/database.php');
 
+
+echo " <style>
+
+.col , .col-1{
+    border: 1px solid black;
+}
+</style>";
+
+include_once './View/base/header.php';
+
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" href="\Desarrollo_web_php\View\css\bootstrap.min.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
- -->
-    <title>Hello, world!</title>
-
-    <style>
-
-        .col , .col-1{
-            border: 1px solid black;
-        }
-    </style>
-  </head>
-  <body>
    
+<!-- CONTENT -->
 
 
   <div class="container my-5">
@@ -182,54 +171,14 @@ include_once('/xampp/htdocs/desarrollo_web_php/database/database.php');
         <div class="col py-2" >1</div>
     </div>
 
-
-
-
-
-
   </div>
 
   <?php } ?>
 
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-
-
-
+<!-- footer -->
 
 <?php
+include_once './View/base/footer.php';
 
-$html = ob_get_clean();
-echo $html;
-
-
-require_once '../libreria/dompdf/autoload.inc.php';
-
-// reference the Dompdf namespace
-/* use Dompdf\Dompdf;
-
-// instantiate and use the dompdf class
-$dompdf = new Dompdf();
-
-
-$options = $dompdf->getOptions();
-$options->set(array('isRemoteEnable'=> true));
-$dompdf->setOptions($options);
-
-
-$dompdf->loadHtml($html);
-
-// (Optional) Setup the paper size and orientation
-#$dompdf->setPaper('A4', 'landscape');
-$dompdf->setPaper('letter');
-
-// Render the HTML as PDF
-$dompdf->render();
-
-// Output the generated PDF to Browser
-$dompdf->stream("archivo.pdf",array('Attachment'=>false)); */
+?>
