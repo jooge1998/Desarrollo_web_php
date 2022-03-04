@@ -55,7 +55,7 @@ class Actas extends DATABASE{
             
             $stm->execute([
                 $_POST['tema'],
-                $_POST['citada'],
+                $_POST['citada_por'],
                 $_POST['hora_inicio'],
                 $_POST['hora_fin'],
                 $_POST['fecha'],
@@ -76,7 +76,7 @@ class Actas extends DATABASE{
 
             $stm->execute([
                 $_POST['tema'],
-                $_POST['citada_por'],
+                $_POST['citada'],
                 $_POST['hora_inicio'],
                 $_POST['hora_fin'],
                 $_POST['fecha'],

@@ -15,7 +15,7 @@ public function Create(){
         #llama al metodo create
         $actas->create();
 
-        header('location: /desarrollo_Web_php/View/participantes.php');
+        header('location: /desarrollo_Web_php/index.php');
     }
 
 }
@@ -31,7 +31,7 @@ public function Delete(){
         #llama al metodo delete delete
         $actas->delete($_GET['id']);
 
-        header('location: /desarrollo_Web_php/View/actas.php');
+        header('location: /desarrollo_Web_php/index.php');
     }
 }
 
@@ -60,9 +60,9 @@ public function Read(){
 
       <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
-      <a class='btn btn-primary mx-2' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
+      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=update&id=$value->N_ACTA' class='btn btn-primary mx-2' > EDITAR</a>
 
-      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=viewRead&id=$value->N_ACTA'' 
+      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=viewRead&id=$value->N_ACTA' 
       class='btn btn-success'>Ver</a> 
     
       </div>
@@ -98,7 +98,13 @@ public function Update(){
         #llama al metodo delete delete
         $actas->update($_GET['id']);
 
-        header('location: /desarrollo_Web_php/View/actas.php');
+        header('location: /desarrollo_Web_php/index.php');
+    }else{
+        
+        $id = $_GET['id'];
+
+       require_once "/xampp/htdocs/desarrollo_Web_php/View/actas.php";
+
     }
     
 }
