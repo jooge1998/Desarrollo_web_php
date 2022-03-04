@@ -84,20 +84,5 @@ class Participantes extends DATABASE{
       }
 
 
-       // obtienen el n_acta de el ultimo registro agregrado
-       public function SelectActa(){
-        try{
-            $stm=$this->getConnection()->prepare("SELECT `N_ACTA` FROM actas ORDER BY N_ACTA DESC LIMIT 1");
-
-            $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-      }
-
-
 
 }

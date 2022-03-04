@@ -45,18 +45,18 @@ public function Read(){
     
     foreach ($actas->getAll() as $key => $value) {
 
-      echo "<tr><td >" . $i . "</td>";
-      echo  "<td >" . $value->TEMA . "</td>";
-      echo  "<td >" . $value->CITADA_POR . "</td>";
-      echo  "<td >" . $value->HORA_INICIO . "</td>";
-      echo  "<td >" . $value->HORA_FIN . "</td>";
-      echo  "<td >" . $value->FECHA . "</td>";
-      echo  "<td >" . $value->PRESIDENTE . "</td>";
-      echo  "<td >" . $value->LUGAR . "</td>";
-      echo  "<td >" . $value->ORDEN_DIA . "</td>";
-
-      echo  "<td>
-      <div class='d-flex justify-content-center'>
+      echo 
+      "<tr><td>" . $i . "</td>"
+      . "<td>" . $value->TEMA . "</td>"
+      . "<td>" . $value->CITADA_POR . "</td>"
+      . "<td>" . $value->HORA_INICIO . "</td>"
+      . "<td>" . $value->HORA_FIN . "</td>"
+      . "<td>" . $value->FECHA . "</td>"
+      . "<td>" . $value->PRESIDENTE . "</td>"
+      . "<td>" . $value->LUGAR . "</td>"
+      . "<td>" . $value->ORDEN_DIA . "</td>" 
+      . "<td>
+       <div class='d-flex justify-content-center'>
 
       <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
@@ -66,8 +66,7 @@ public function Read(){
       class='btn btn-success'>Ver</a> 
     
       </div>
-      </td>";
-      echo "</tr>";
+      </td></tr>";
       $i++;
   }
 }
