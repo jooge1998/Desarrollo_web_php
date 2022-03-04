@@ -77,74 +77,6 @@ include_once './View/base/header.php';
 
     <!-- 2 PARTE -->
 
-    <div class="row mt-4 text-center">
-        <div class="col py-2" style="background-color: gray;">PARTICIPANTES</div>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-1 py-2" >N</div>
-        <div class="col py-2" >NOMBRE</div>
-        <div class="col py-2" >CARGO</div>
-        <div class="col py-2" >CONTACTO</div>
-        <div class="col py-2" >COMPROMISO</div>
-        <div class="col py-2" >RESPONSABILIDADES</div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-1 py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-1 py-2">2</div>
-        <div class="col py-2">1</div>
-        <div class="col py-2">1</div>
-        <div class="col py-2">1</div>
-        <div class="col py-2">1</div>
-        <div class="col py-2">1</div>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-1 py-2" >3</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-1 py-2" >4</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-
-    </div>
-
-    <div class="row ">
-        <div class="col-1 py-2" >5</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-        <div class="col py-2" >1</div>
-
-    </div>
-
-
-    <!-- 3 PARTE -->
-
 
     <div class="row mt-4 text-center">
         <div class="col py-2" style="background-color: gray">ORDEN DEL DIA</div>
@@ -152,28 +84,76 @@ include_once './View/base/header.php';
 
     <div class="row ">
         <div class="col-1 py-2" >1</div>
-        <div class="col py-2" >1</div>
+        <div class="col py-2 text-center" >
+        <?php echo $value->ORDEN_DIA ?>
+        </div>
     </div>
     <div class="row ">
         <div class="col-1 py-2" >2</div>
-        <div class="col py-2" >1</div>
+        <div class="col py-2" ></div>
     </div>
     <div class="row ">
         <div class="col-1 py-2" >3</div>
-        <div class="col py-2" >1</div>
+        <div class="col py-2" ></div>
     </div>
     <div class="row">
         <div class="col-1  py-2" >4</div>
-        <div class="col py-2" >1</div>
+        <div class="col py-2" ></div>
     </div>
     <div class="row">
         <div class="col-1 py-2" >5</div>
-        <div class="col py-2" >1</div>
+        <div class="col py-2" ></div>
+    </div>
+  <?php } ?>
+
+    <!-- 3 PARTE -->
+
+   
+
+    <div class="row mt-4 text-center">
+        <div class="col py-2" style="background-color: gray;">PARTICIPANTES</div>
+
     </div>
 
-  </div>
+    <div class="row ">
+        <div class="col-1 py-2 text-center" >N</div>
+        <div class="col py-2 text-center" >NOMBRE</div>
+        <div class="col py-2 text-center" >CARGO</div>
+        <div class="col py-2 text-center" >CONTACTO</div>
+        <div class="col py-2 text-center" >COMPROMISO</div>
+        <div class="col py-2 text-center" >RESPONSABILIDADES</div>
 
-  <?php } ?>
+    </div>
+
+    <?php 
+        $i = 1;
+    foreach ($participantes->getAll($_GET['id']) as $key => $value){ ?> 
+
+    <div class="row">
+        <div class="col-1 py-2 text-center" >
+            <?php echo $i;?>
+        </div>
+        <div class="col py-2 text-center" >
+            <?php echo $value->NOMBRE ?>
+        </div>
+        <div class="col py-2 text-center" >
+            <?php echo $value->CARGO ?>
+        </div>
+        <div class="col py-2 text-center" >
+            <?php echo $value->CONTACTO ?>
+        </div>
+        <div class="col py-2 text-center" >
+<!-- <?php echo $value->HORA_FIN ?> -->
+        </div>
+        <div class="col py-2 text-center" >
+           <!--  <?php echo $value->HORA_FIN ?> -->
+        </div>
+
+    </div>
+
+    <?php $i++; } ?>
+    </div>
+
 
 
 <!-- footer -->

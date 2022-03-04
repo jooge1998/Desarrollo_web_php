@@ -50,7 +50,8 @@ class Actas extends DATABASE{
     // Inserta un nuevo registro en la tabla
     public function create(){
         try{
-            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN, FECHA, PRESIDENTE,LUGAR, COMPROMISOS) VALUES (?,?,?,?,?,?,?,?)");
+            $stm=$this->getConnection()->prepare("INSERT INTO $this->table (TEMA, CITADA_POR, HORA_INICIO, HORA_FIN,
+             FECHA, PRESIDENTE,LUGAR,  ORDEN_DIA) VALUES (?,?,?,?,?,?,?,?)");
             
             $stm->execute([
                 $_POST['tema'],
@@ -60,7 +61,7 @@ class Actas extends DATABASE{
                 $_POST['fecha'],
                 $_POST['presidente'],
                 $_POST['lugar'],
-                $_POST['compromisos']
+                $_POST['ordendia']
             ]);
         }catch(PDOException $e){
         echo $e->getMessage();
@@ -70,7 +71,8 @@ class Actas extends DATABASE{
       // Actualiza un resgistro por Id
       public function update($id){
         try{
-            $stm=$this->getConnection()->prepare("UPDATE $this->table SET TEMA = ?, CITADA_POR = ? , HORA_INICIO = ? , HORA_FIN = ? ,FECHA = ?, PRESIDENTE = ? , LUGAR = ? , COMPROMISOS = ? WHERE N_ACTA = ?");
+            $stm=$this->getConnection()->prepare("UPDATE $this->table SET TEMA = ?, CITADA_POR = ? , HORA_INICIO = ? ,
+             HORA_FIN = ? ,FECHA = ?, PRESIDENTE = ? , LUGAR = ? , ORDEN_DIA = ? WHERE N_ACTA = ?");
 
             $stm->execute([
                 $_POST['tema'],
@@ -80,7 +82,7 @@ class Actas extends DATABASE{
                 $_POST['fecha'],
                 $_POST['presidente'],
                 $_POST['lugar'],
-                $_POST['compromisos'],
+                $_POST['ordendia'],
                 $id
         ]);
 

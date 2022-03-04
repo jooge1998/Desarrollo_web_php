@@ -40,14 +40,12 @@ public function Read(){
 
     $participantes = new Participantes();
 
-    $i = 1;
     #recorre todos los datos en la base de datos
-    
-    foreach ($participantes->getAll() as $key => $value) {
+    foreach ($participantes->getAll($id) as $key => $value) {
 
        
       echo  "<tr><td>
-      <input type='checkbox' name='id".$i."' value='$value->USUARIO_ID'>
+      <input type='checkbox' name='usuario_id[]' value='$value->USUARIO_ID'>
        </td>";
       echo  "<td >" . $value->NOMBRE . "</td>";
       echo  "<td >" . $value->CARGO . "</td>";
@@ -57,12 +55,13 @@ public function Read(){
 
       <a href='/desarrollo_web_php/ruteador.php?controller=participantes&action=delete&id=$value->USUARIO_ID' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
-      <a class='btn btn-primary' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
+      <a class='btn btn-primary'  data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
+
+
 
       </div>
       </td>";
       echo "</tr>";
-      $i++;
   }
 }
 

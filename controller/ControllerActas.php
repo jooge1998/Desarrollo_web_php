@@ -15,7 +15,7 @@ public function Create(){
         #llama al metodo create
         $actas->create();
 
-        header('location: /desarrollo_Web_php/View/actas.php');
+        header('location: /desarrollo_Web_php/View/participantes.php');
     }
 
 }
@@ -45,10 +45,7 @@ public function Read(){
     
     foreach ($actas->getAll() as $key => $value) {
 
-      echo "<tr>";
-      echo  "<td >
-      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=viewRead&id=$value->N_ACTA'' class='btn btn-success'>v</a> 
-      </td>";
+      echo "<tr><td >" . $i . "</td>";
       echo  "<td >" . $value->TEMA . "</td>";
       echo  "<td >" . $value->CITADA_POR . "</td>";
       echo  "<td >" . $value->HORA_INICIO . "</td>";
@@ -56,15 +53,18 @@ public function Read(){
       echo  "<td >" . $value->FECHA . "</td>";
       echo  "<td >" . $value->PRESIDENTE . "</td>";
       echo  "<td >" . $value->LUGAR . "</td>";
-      echo  "<td >" . $value->COMPROMISOS . "</td>";
+      echo  "<td >" . $value->ORDEN_DIA . "</td>";
 
       echo  "<td>
       <div class='d-flex justify-content-center'>
 
       <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=delete&id=$value->N_ACTA' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
-      <a class='btn btn-primary' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
+      <a class='btn btn-primary mx-2' onclick='enviar($i)' data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
 
+      <a href='/desarrollo_web_php/ruteador.php?controller=actas&action=viewRead&id=$value->N_ACTA'' 
+      class='btn btn-success'>Ver</a> 
+    
       </div>
       </td>";
       echo "</tr>";
@@ -76,9 +76,11 @@ public function Read(){
 
 public function ViewRead(){
     require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/actas.php");
-    #header('location: /desarrollo_Web_php/View/Viewactas.php');
+    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/participantes.php");
 
     $actas = new Actas();
+
+    $participantes = new Participantes();
 
     require_once  ("/xampp/htdocs/desarrollo_Web_php/View/Viewactas.php");
 

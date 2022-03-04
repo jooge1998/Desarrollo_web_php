@@ -82,7 +82,7 @@
 
             <input class="form-control mb-3" type="text" name="lugar" placeholder="Lugar" required>
 
-            <input class="form-control mb-3" type="text" name="compromisos" placeholder="compromiso" required>
+            <input class="form-control mb-3" type="text" name="ordendia" placeholder="Orden del Dia" required>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
