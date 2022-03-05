@@ -2,7 +2,7 @@
 
 /* base de datos */
 
-include_once('/xampp/htdocs/desarrollo_web_php/database/database.php');
+include_once('./database/database.php');
 
 
 echo " <style>

@@ -6,7 +6,7 @@ class ControllerParticipantes{
 #crea un nuevo cliente
 public function Create(){
     
-    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/participantes.php");
+    require_once  ("./Model/participantes.php");
 
     $participantes = new Participantes();
 
@@ -15,14 +15,14 @@ public function Create(){
         #llama al metodo create
         $participantes->create();
 
-        header('location: /desarrollo_Web_php/View/participantes.php');
+        header('location: ./View/participantes.php');
     }
 
 }
 
 public function Delete(){
 
-    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/participantes.php");
+    require_once  ("./Model/participantes.php");
 
     $participantes = new Participantes();
 
@@ -31,12 +31,12 @@ public function Delete(){
         #llama al metodo delete delete
         $participantes->delete($_GET['id']);
 
-        header('location: /desarrollo_Web_php/View/participantes.php');
+        header('location: ./View/participantes.php');
     }
 }
 
 public function Read(){
-    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/participantes.php");
+    require_once  ("./Model/participantes.php");
 
     $participantes = new Participantes();
 
@@ -53,7 +53,7 @@ public function Read(){
       echo  "<td>
       <div class='d-flex justify-content-center'>
 
-      <a href='/desarrollo_web_php/ruteador.php?controller=participantes&action=delete&id=$value->USUARIO_ID' class='btn btn-danger mx-2'>ELIMINAR</a> 
+      <a href='/ruteador.php?controller=participantes&action=delete&id=$value->USUARIO_ID' class='btn btn-danger mx-2'>ELIMINAR</a> 
 
       <a class='btn btn-primary'  data-bs-toggle='modal' data-bs-target='#staticBackdrop'> EDITAR</a>
 
@@ -68,7 +68,7 @@ public function Read(){
 
 public function Update(){
 
-    require_once  ("/xampp/htdocs/desarrollo_Web_php/Model/participantes.php");
+    require_once  ("./Model/participantes.php");
 
     $participantes = new Participantes();
 
@@ -77,7 +77,7 @@ public function Update(){
         #llama al metodo delete delete
         $participantes->update($_GET['id']);
 
-        header('location: /desarrollo_Web_php/View/participantes.php');
+        header('location: ./View/participantes.php');
     }
     
 }

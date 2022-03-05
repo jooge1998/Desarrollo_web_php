@@ -37,7 +37,7 @@
 
     <?php
 
-        include_once "/xampp/htdocs/desarrollo_web_php/controller/ControllerActas.php";
+        include_once "./controller/ControllerActas.php";
 
         $actas = new ControllerActas();
 
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="modal-body">
-                <form action="/desarrollo_Web_php/ruteador.php?controller=actas&action=create" method="post">
+                <form action="./ruteador.php?controller=actas&action=create" method="post">
                   
                     <input class="form-control mb-3" type="text" name="tema" placeholder="Tema" required>
 
